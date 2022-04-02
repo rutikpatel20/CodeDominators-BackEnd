@@ -1,0 +1,83 @@
+/* HOMEPAGE  */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.mycarousel {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.mycard {
+  max-width: 300px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  border: none;
+  margin: 0 auto;
+}
+
+.mycard:hover {
+  -webkit-transform: skew(-2deg, 2deg) scale(1.1);
+          transform: skew(-2deg, 2deg) scale(1.1);
+}
+
+.service-card {
+  border: none;
+}
+
+.service-card:hover {
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.service-card i {
+  padding: 1rem;
+  font-size: 5rem;
+  color: orange;
+}
+
+.icons {
+  margin-top: 10px;
+}
+
+.icons i {
+  font-size: 1.5rem;
+  color: orange;
+}
+
+.fa-brands {
+  padding: 0 10px;
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0px;
+  font-size: 1.5rem;
+  color: orange;
+}
+
+.btn-primary {
+  background: orange !important;
+  border: orange !important;
+}
+
+a {
+ 
+  text-decoration: none !important;
+}
+a:hover{
+  color: orange !important;
+}
+
+.small-text{
+  
+  font-size: 12px;
+}
+
+.signup{
+  height: 100vh;
+}
+
