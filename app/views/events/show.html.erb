@@ -100,16 +100,17 @@
 
           <div class="row">
             <h4 class="col-md-12">Stall Details</h4>
-            <div>
               <p>Total Available Stalls : <%= @event.total_stall %></p>
+            <div class="d-flex">
               <% @event.stalls.each do |s |%>
+            <div class="stallstyle ">
               <p>Stall Category : <%=s.stall_type%></p>
               <p>Stall Size : <%=s.stall_size%></p>
               <p>Stall Price : <span>&#8377;</span> <%=s.stall_price%></p>
-              <% end %>
             </div>
+              <% end %>
           </div>
-
+</div>
           <div class="row bookingbtn">
             <button
               type="button"
@@ -118,13 +119,8 @@
             >
               Book Ticket
             </button>
-            <button
-              type="button"
-              class="btn col-md-6 m-3"
-              style="background-color: orange !important; color: white"
-            >
-              Book Booth
-            </button>
+          <%= button_to "Book Booth", new_booth_path(@event)	, method: :get, class:"btn col-md-6 m-3",
+              style:"background-color: orange !important; color: white" %>
           </div>
         </div>
       </div>

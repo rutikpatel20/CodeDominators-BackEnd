@@ -1,0 +1,54 @@
+<head>
+      <%= stylesheet_link_tag "booth" %>
+
+</head>
+<body>
+    <div class="signupFrm">
+        <%= form_with( class:"form row") do |f| %>
+            <p class="title">Booth Booking Form</p>
+            <p class="subTitle">To reserve place please complete and submit the booking form.</p>
+            <div class="inputContainer">
+              <%= f.text_field :firstname, placeholder:"a" ,class:"input" %>
+              <label for="" class="label">First Name</label>
+            </div>
+            <div class="inputContainer">
+              <%= f.text_field :lastname, placeholder:"a"  ,class:"input" %>
+              <label for="" class="label">Last Name</label>
+            </div>
+
+            <div class="inputContainer">
+                <%= f.text_field :email, placeholder:"a"  ,class:"input" %> 
+                <label for="" class="label">Email</label>
+            </div>
+
+            <div class="inputContainer">
+                <%= f.number_field :contact_num, placeholder:"a"  ,class:"input" %>
+                <label for="" class="label">Contact No</label>
+            </div>
+            <div class="row">
+            <h4 class="col-md-12">Stall Details</h4>
+              <p>Total Available Stalls : <%= @event.total_stall %></p>
+            <div class="d-flex">
+              <% @event.stalls.each do |s |%>
+            <div class="stallstyle ">
+              <p>Stall Category : <%=s.stall_type%></p>
+              <p>Stall Size : <%=s.stall_size%></p>
+              <p>Stall Price : <span>&#8377;</span> <%=s.stall_price%></p>
+              <%= f.check_box :stall_id, {multiple: true}, "#{s.id}", false %>book
+            </div>
+              <% end %>
+          </div>
+
+            <%= f.submit class:"submitBtn", onclick:"clicked(event)" %>
+        
+        <% end %>
+        
+    </div>
+
+    <script>
+        function clicked(e) {
+            if (!confirm('Are you sure?')) {
+                e.preventDefault();
+            }
+        }
+    </script>

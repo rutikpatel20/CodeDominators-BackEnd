@@ -1,0 +1,2 @@
+class Booth < ApplicationRecord
+end
