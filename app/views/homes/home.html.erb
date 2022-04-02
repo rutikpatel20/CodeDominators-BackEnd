@@ -1,5 +1,5 @@
+<!--    if user loged in -->
 <% if user_signed_in? %>
-
   <body class="home">
   <header>
     <div class="container">
@@ -18,17 +18,16 @@
 
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="#">Booth Zone</a>
+          <a class="navbar-brand">Booth Zone</a>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
               <a class="nav-link" href="#">About</a>
-              <a class="nav-link" href="#">Events</a>
             </div>
 
           <div class="icons ms-auto d-flex">
           <% if current_user.role == 'event'  %>
-          <%= button_to "Register event", new_user_registration_path, method: :get, class:"btn btn-primary me-2" %>
+          <%= button_to "Register event", new_event_path, method: :get, class:"btn btn-primary me-2" %>
           <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
           <% else %>
           <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
@@ -130,126 +129,48 @@
       </button>
     </div>
   </section>
-
   <section class="pt-5">
     <div class="container">
       <h2 class="text-center my-4">CARD SECTION</h2>
       <div class="row justify-content-around">
-        <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
-            </div>
-          </div>
-        </div>
+      <% @events.each do |event|%>
+      <% if @events.any? %>
 
         <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
+        
+          <a href="">
+            <div class="card mycard">
+              <img
+                class="card-img-top"
+                src="<%=event.event_poster %>"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h6 class="card-title">Event Name</h6>
+                <p class="card-text">
+                  <%= event.event_name  %>
+                </p>
+                <div class="wrapper d-flex justify-content-between">
+                  <div>
+                    <h6 class="card-title">Start Date</h6>
+                    <p class="card-text">
+                      <%= event.start_date  %>
+                    </p>
+                  </div>
+                  <div>
+                    <h6 class="card-title">End Date</h6>
+                    <p class="card-text">
+                      <%= event.end_date  %>
+                    </p>
+            
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
-
-        <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
-            </div>
-          </div>
-        </div>
-     
-        <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mb-5">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-              <a href="#" class="btn btn-primary">Book</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <% end %>
+        <% end %>
 
   <section class="services pt-5">
     <div class="container">
@@ -490,7 +411,8 @@
   </footer>
 
 </body>
-<% else %> 
+<!-- if any user not logged in --> 
+<% else %>
 <body class="home">
     <header>
       <div class="container">
@@ -509,12 +431,11 @@
 
               <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Booth Zone</a>
+            <a class="navbar-brand">Booth Zone</a>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                 <a class="nav-link" href="#">About</a>
-                <a class="nav-link" href="#">Events</a>
               </div>
 
             <div class="icons ms-auto d-flex">
@@ -619,131 +540,50 @@
       </div>
     </section>
 
-    <section class="pt-5">
-      <div class="container">
-        <h2 class="text-center my-4">CARD SECTION</h2>
-        <div class="row justify-content-around">
-          <div class="col-sm-6 col-lg-4 mb-5">
-            <a href="">
-              <div class="card mycard">
-                <img
-                  class="card-img-top"
-                  src="https://picsum.photos/200/100"
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Description Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Consectetur, modi!
-                  </p>
-                  <p>$$</p>
+     <section class="pt-5">
+    <div class="container">
+      <h2 class="text-center my-4">CARD SECTION</h2>
+      <div class="row justify-content-around">
+      <% @events.each do |event|%>
+      <% if @events.any? %>
+
+        <div class="col-sm-6 col-lg-4 mb-5">
+        
+          <a href="">
+            <div class="card mycard">
+              <img
+                class="card-img-top"
+                src="<%=event.event_poster %>"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h6 class="card-title">Event Name</h6>
+                <p class="card-text">
+                  <%= event.event_name  %>
+                </p>
+                <div class="wrapper d-flex justify-content-between">
+                  <div>
+                    <h6 class="card-title">Start Date</h6>
+                    <p class="card-text">
+                      <%= event.start_date  %>
+                    </p>
+                  </div>
+                  <div>
+                    <h6 class="card-title">End Date</h6>
+                    <p class="card-text">
+                      <%= event.end_date  %>
+                    </p>
+            
+                  </div>
                 </div>
               </div>
-            </a>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-5">
-          <a href="">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
             </div>
-          </div>
-        </a>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-5">
-          <a href="">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-            </div>
-          </div>
-        </a>
-          </div>
-       
-          <div class="col-sm-6 col-lg-4 mb-5">
-          <a href="">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-            </div>
-          </div>
-        </a>
-          </div>
-
-          <div class="col-sm-6 col-lg-4 mb-5">
-          <a href="">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-            </div>
-          </div>
-        </a>
-          </div>
-          <div class="col-sm-6 col-lg-4 mb-5">
-          <a href="">
-          <div class="card mycard">
-            <img
-              class="card-img-top"
-              src="https://picsum.photos/200/100"
-              alt="Card image cap"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                Description Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, modi!
-              </p>
-              <p>$$</p>
-            </div>
-          </div>
-        </a>
-          </div>
+          </a>
         </div>
-      </div>
-    </section>
+        <% end %>
+        <% end %>
+
+ 
 
     <section class="services pt-5">
       <div class="container">

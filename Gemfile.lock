@@ -109,6 +109,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
+    image_magick (0.1.9)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -246,6 +247,7 @@ DEPENDENCIES
   carrierwave
   debug
   devise
+  image_magick
   image_processing
   importmap-rails
   jbuilder

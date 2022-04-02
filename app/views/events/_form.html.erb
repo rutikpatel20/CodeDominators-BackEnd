@@ -78,10 +78,10 @@
                 <%= stall_form.select :stall_type, [['Food','Food'],['Beverages','Beverages'],['Commercial','Commercial']], class:"form-select form-control" %>
                 </div>
                 <div class="col-md-3 mt-2">
-                  <%= form.text_field :stall_size, class:"form-control", placeholder:"Stall size"%>
+                  <%= stall_form.text_field :stall_size, class:"form-control", placeholder:"Stall size"%>
                 </div>
                 <div class="col-md-3 mt-2">
-                  <%= form.number_field :stall_price, class:"form-control", placeholder:"Stall Price"%>
+                  <%= stall_form.number_field :stall_price, class:"form-control", placeholder:"Stall Price"%>
                 </div>
                 <% i+=1 %>
                 <% end %>

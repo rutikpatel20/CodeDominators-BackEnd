@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
   def index
   end
 
@@ -12,7 +13,7 @@ class EventsController < ApplicationController
     
     if event.valid?
       flash[:notice] = "Employee is successfully added."
-      redirect_to event_path(event)
+      redirect_to root_path
     else
       flash[:errors] = event.errors.full_messages
       redirect_to event_path(event)

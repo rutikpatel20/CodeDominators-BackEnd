@@ -75,7 +75,9 @@ body{
   color:  inherit !important;
   text-decoration: none !important;
 }
-
+.card-img-top{
+  height: 200px;
+}
 
 .small-text{
   
