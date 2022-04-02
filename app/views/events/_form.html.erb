@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+
+
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <section class="signup py-5 bg-light">
+        <div class="container">
+            <div class="main-register">
+                <div class="col-lg-5">
+                    <img src="./images/dj.jpeg" class="img-fluid" alt="avatar" />
+                </div>
+                <div class="col-lg-7 text-center py-5">
+                    <h1>Register for an Event</h1>
+
+
+                    <%= form_for @event do |f| %>
+
+                        <div class="col-md-6">
+                            <%= f.text_field :event_name ,placeholder: "Event Name" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-6">
+                            <%= f.text_field :organizer_name ,placeholder: "Organization's Name" ,class:"form-control"
+                                %>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <%= f.text_field :email ,placeholder: "Email Id" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <%= f.number_field :mobile_no ,placeholder: "Contact No" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <label>Start Date</label>
+                            <%= f.date_select :start_date ,placeholder: "Start Date" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <label>End Date</label>
+                            <%= f.date_select :end_date ,placeholder: "End Date" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <label>Visitor's Count</label>
+                            <%= f.number_field :city ,placeholder: "Visitor's Count" ,class:"form-control" %>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label>Event Description</label>
+                            <%= f.text_area :description_of_event,placeholder: "Event Description",class:"form-control",:rows=> 2 %>
+                        </div>
+
+
+                        <div class="col-md-3 mt-2">
+                            <label>Total Stalls</label>
+                            <%= f.number_field :total_stall ,placeholder: "Total Stalls" ,class:" form-control" %>
+                        </div>
+                        <div>
+                        <% i=1 %>
+                        <%= f.fields_for :stalls do |stall_form| %>
+                            Stall  <%=i%><% i+=1 %>:<br/>
+                            <div class="col-md-3 mt-2">
+                            <label>Stall Type</label>
+                            <%= stall_form.select :stall_type, ['Food', 'Beverages' ,'Commercial'], class:"form-select"%>
+                            </div>
+                              <div class="col-md-3 mt-2">
+                            <label>Stall Size</label>
+                            <%= stall_form.text_field :stall_size ,placeholder: "Total Stalls" ,class:" form-control" %>
+                            </div>
+                             <div class="col-md-3 mt-2">
+                            <label>Stall Price</label>
+                            <%= stall_form.number_field :stall_price ,placeholder: "Total Price" ,class:" form-control" %>
+                            </div>
+                        <% end %>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label>Venue</label>
+                            <%= f.text_area :venue ,placeholder: "Venue" ,class:" form-control" %>
+                        </div>
+
+                        <div class="col-md-4 mt-2">
+                            <label>City</label>
+                            <%= f.select :city, ['Ahmedabad', 'Surat' ,'Mumbai'], class:"form-select"%>
+                        </div>
+                        <!--
+                        <div class="col-md-2 mt-2">
+                            <label>Total price</label>
+                            <%#= f.text_field :inputZip ,placeholder: "Zip" ,class:" form-control" %>
+                        </div>
+                        -->
+                        <div class="col-md-2 mt-3">
+                            <label>Event Poster</label>
+                            <%= f.file_field :event_poster ,class:" form-control" %>
+                        </div>
+
+                        <div class="col-md-6 mt-3">
+                            <label>Floor Plan</label>
+                            <%= f.file_field :floor_plan ,class:" form-control" %>
+                        </div>
+
+
+                        <%= f.button "Register an event" , type: "submit" , :class=> "btn btn-success mt-3" %>
+
+                            <%#= link_to 'Already have an Account ? Sign in' , new_student_path %>
+                        <% end %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
