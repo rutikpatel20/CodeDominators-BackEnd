@@ -24,7 +24,6 @@
     <section class="py-2 register_main">
         <div class="container register">
           <div class="jumbotron">
-            <h1 style="font-weight: bold;font-size: 40px;">Register for an Event</h1>
               <%= form_with(model: @event, class: "row") do |form| %>
                 <div class="col-md-6">
                    <%= form.text_field :event_name, class:"form-control",placeholder:"Event Name" %>
@@ -111,7 +110,7 @@
                 <div class="col-md-12 mt-2">
                  <%= form.check_box :terms_condition %><span>  Agree to the <a href="#">Terms and Conditions</a> </span>
                 </div>
-                <%=form.submit%>
+                <%=form.submit class:"btn mt-3" style:"background-color: orange!important;color: white;"%>
                 <button type="button" class="btn mt-3" style="background-color: orange!important;color: white;" >
                   Register an event
                 </button>

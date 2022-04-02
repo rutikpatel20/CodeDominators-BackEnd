@@ -1,11 +1,11 @@
 class BoothsController < ApplicationController
   def new
     @event = Event.find(params[:id])
+    @booth = Booth.new
   end
 
   def create
     booth = Booth.create(booth_params)
-    
     if booth.valid?
       flash[:notice] = "Employee is successfully added."
       redirect_to root_path

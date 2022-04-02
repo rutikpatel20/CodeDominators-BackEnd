@@ -4,15 +4,15 @@
 </head>
 <body>
     <div class="signupFrm">
-        <%= form_with( class:"form row") do |f| %>
+        <%= form_with(model:@booth, class:"form row") do |f| %>
             <p class="title">Booth Booking Form</p>
             <p class="subTitle">To reserve place please complete and submit the booking form.</p>
             <div class="inputContainer">
-              <%= f.text_field :firstname, placeholder:"a" ,class:"input" %>
+              <%= f.text_field :first_name, placeholder:"a" ,class:"input" %>
               <label for="" class="label">First Name</label>
             </div>
             <div class="inputContainer">
-              <%= f.text_field :lastname, placeholder:"a"  ,class:"input" %>
+              <%= f.text_field :last_name, placeholder:"a"  ,class:"input" %>
               <label for="" class="label">Last Name</label>
             </div>
 
@@ -22,7 +22,7 @@
             </div>
 
             <div class="inputContainer">
-                <%= f.number_field :contact_num, placeholder:"a"  ,class:"input" %>
+                <%= f.number_field :contact, placeholder:"a"  ,class:"input" %>
                 <label for="" class="label">Contact No</label>
             </div>
             <div class="row">
@@ -38,17 +38,27 @@
             </div>
               <% end %>
           </div>
-
-            <%= f.submit class:"submitBtn", onclick:"clicked(event)" %>
+          <div class= "new-payment-method-fields" ></div>
+          <%= f.submit class:"submitBtn"%>
         
         <% end %>
         
     </div>
 
+    <script
+      type="text/javascript"
+      src="https://sandbox.web.squarecdn.com/v1/square.js"
+    ></script>
     <script>
-        function clicked(e) {
-            if (!confirm('Are you sure?')) {
-                e.preventDefault();
-            }
+      const appId = "sandbox-sq0idb-CXD48NeKYTv-HafKm_g5oQ";
+      const locationId = "LT1M1E3HEGP46";
+      document.addEventListener('DOMContentLoaded', async function () {
+        if (!window.Square) {
+          throw new Error('Square.js failed to load properly');
         }
+        payments = window.Square.payments(appId, locationId);
+ 
+        window.card = await payments.card()
+        window.card_detail = await card.attach('.new-payment-method-fields')
+      });
     </script>
