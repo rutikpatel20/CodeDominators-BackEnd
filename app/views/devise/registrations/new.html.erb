@@ -1,9 +1,8 @@
-<head>
-</head>
-<body class="signup">
+
+<body class="signup vh-100">
     
-    <div class="container">
-    <div class="row justify-content-center align-items-center">
+    <div class="container vh-100">
+    <div class="row justify-content-center align-items-center vh-100">
     <div class="col-md-4">
   
     <h2 class="text-center py-3">SIGN UP</h2>
@@ -40,14 +39,16 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mb-3" %>
       </div>
   
-      <div class="actions">
-        <%= f.submit "Sign up", class:"btn btn-primary mb-1"  %>
+      <div class="wrapper d-flex align-items-center">
+        <div class="actions">
+          <%= f.submit "Sign up", class:"btn btn-primary"  %>
+        </div>
+            <% end %>
+          
+            <span class="small-text ms-auto">
+        <%= render "devise/shared/links"%>
+            </span>
       </div>
-    <% end %>
-  
-    <span class="small-text">
-      <%= render "devise/shared/links"%>
-    </span>
     </div></div>
     </div>
     </div>

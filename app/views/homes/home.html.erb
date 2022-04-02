@@ -29,10 +29,6 @@
 
             <%= button_to "Sign Up", new_user_registration_path, method: :get, class:"btn btn-primary me-2" %>
             <%= button_to "Log In", new_user_session_path, method: :get, class: "btn btn-primary" %>
-           
-          
-
-
 
             </div>
             </div>
@@ -338,9 +334,12 @@
       <div class="container">
         <h2 class="text-center my-4">CONTACT US</h2>
         <div class="row justify-content-between">
-          <div class="col-md-6"></div>
-
           <div class="col-md-6">
+        
+          <%= image_tag("contact_us.svg", alt: "Edit Entry") %>
+          </div>
+
+          <div class="col-md-6 d-flex align-items-center">
             <form
               class="form-info mx-auto border border-1 p-4"
               style="max-width: 500px"
