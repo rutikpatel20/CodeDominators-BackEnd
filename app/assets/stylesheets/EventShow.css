@@ -1,0 +1,39 @@
+.eventdisplay {
+  display: flex;
+  flex-direction: row;
+}
+.eventposter {
+  height: 90vh;
+}
+
+.eventdetails {
+  height: 90vh;
+
+  padding: 10px;
+}
+
+.bookingbtn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.row > * {
+  flex-shrink: unset;
+}
+.carousel .carousel-item {
+
+  height: 520px;
+  
+  }
+   
+  .carousel-item img {
+  
+  position: absolute;
+  
+  top: 0;
+  
+  left: 0;
+  
+  min-height: 520px;
+  
+  }
