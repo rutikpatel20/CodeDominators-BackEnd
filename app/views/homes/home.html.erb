@@ -1,5 +1,497 @@
+<% if user_signed_in? %>
 
   <body class="home">
+  <header>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light d-flex py-3">
+        <div class="container-fluid justify-content-start">
+          <button
+            class="navbar-toggler me-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+     
+
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#">Booth Zone</a>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Events</a>
+            </div>
+
+          <div class="icons ms-auto d-flex">
+          <% if current_user.role == 'event'  %>
+          <%= button_to "Register event", new_user_registration_path, method: :get, class:"btn btn-primary me-2" %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+          <% else %>
+          <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+          <% end %>
+
+          </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide mycarousel"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://picsum.photos/1440/600"
+            class="d-block img-fluid mx-auto"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>First slide label</h5>
+            <p>
+              Some representative placeholder content for the first slide.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://picsum.photos/1440/600"
+            class="d-block img-fluid mx-auto"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Second slide label</h5>
+            <p>
+              Some representative placeholder content for the second slide.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://picsum.photos/1440/600"
+            class="d-block img-fluid mx-auto"
+            alt="..."
+          />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Third slide label</h5>
+            <p>
+              Some representative placeholder content for the third slide.
+            </p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="pt-5">
+    <div class="container">
+      <h2 class="text-center my-4">CARD SECTION</h2>
+      <div class="row justify-content-around">
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+     
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mb-5">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
+              <a href="#" class="btn btn-primary">Book</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services pt-5">
+    <div class="container">
+      <h2 class="text-center my-4">SERVICES</h2>
+
+      <div class="row mb-5">
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-5">
+          <div class="card service-card">
+            <i class="fas fa-hotel card-img-top text-center"></i>
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-us py-5">
+    <div class="container">
+      
+      <div class="row justify-content-between">
+        <div class="col-md-6">
+      
+        <%= image_tag("contact_us.svg", alt: "Edit Entry") %>
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+
+        <div class="wrapper">
+          
+          <h2 class="text-center my-4">CONTACT US</h2>
+            <form
+              class="form-info mx-auto border border-1 p-4"
+              style="max-width: 500px"
+            >
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="form6Example3"
+                  class="form-control"
+                  placeholder="Your Name"
+                />
+              </div>
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="form-outline">
+                    <input
+                      type="email"
+                      id="form6Example1"
+                      class="form-control"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-outline">
+                    <input
+                      type="number"
+                      id="form6Example2"
+                      class="form-control"
+                      placeholder="Ph. no."
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  placeholder="Got something to say?"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Submit
+              </button>
+            </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-lg-start bg-light text-muted">
+    <section class="py-4">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Booth Zone</h6>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde,
+              qui?
+            </p>
+            <p class="m-0"><span class="bold">Phone</span>: 108</p>
+            <p class="m-0">
+              <span class="bold">Email</span>: abc@gmail.com
+            </p>
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+            <p>
+              <a href="#!" class="text-reset">Pricing</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Settings</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Orders</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Our Services</h6>
+            <p>
+              <a href="#!" class="text-reset">Angular</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">React</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Vue</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Laravel</a>
+            </p>
+          </div>
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">Join Our Newsletter</h6>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perferendis, repellendus.
+            </p>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Email" />
+              <div class="input-group-append">
+                <span
+                  class="btn btn-primary input-group-text"
+                  id="basic-addon2"
+                  >Subscribe</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+      <div class="container d-flex flex-column flex-md-row">
+        <div class="disclaimer mb-4 mb-md-0">
+          © Copyright:
+          <a class="text-reset fw-bold px-1" href="#"> Booth Zone </a> all
+          rights reserved.
+        </div>
+
+        <div class="icons ms-md-auto text-center">
+          <a href="#" class="fa-brands fa-twitter"></a>
+          <a href="#" class="fa-brands fa-facebook"></a>
+          <a href="#" class="fa-brands fa-instagram"></a>
+          <a href="#" class="fa-brands fa-skype"></a>
+          <a href="#" class="fa-brands fa-linkedin"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+<% else %> 
+<body class="home">
     <header>
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light d-flex py-3">
@@ -132,116 +624,122 @@
         <h2 class="text-center my-4">CARD SECTION</h2>
         <div class="row justify-content-around">
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
+            <a href="">
+              <div class="card mycard">
+                <img
+                  class="card-img-top"
+                  src="https://picsum.photos/200/100"
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">
+                    Description Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Consectetur, modi!
+                  </p>
+                  <p>$$</p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
-              </div>
+          <a href="">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
             </div>
+          </div>
+        </a>
           </div>
 
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
-              </div>
+          <a href="">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
             </div>
+          </div>
+        </a>
           </div>
        
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
-              </div>
+          <a href="">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
             </div>
+          </div>
+        </a>
           </div>
 
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
-              </div>
+          <a href="">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
             </div>
           </div>
+        </a>
+          </div>
           <div class="col-sm-6 col-lg-4 mb-5">
-            <div class="card mycard">
-              <img
-                class="card-img-top"
-                src="https://picsum.photos/200/100"
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Description Lorem ipsum dolor sit amet consectetur adipisicing
-                  elit. Consectetur, modi!
-                </p>
-                <p>$$</p>
-                <a href="#" class="btn btn-primary">Book</a>
-              </div>
+          <a href="">
+          <div class="card mycard">
+            <img
+              class="card-img-top"
+              src="https://picsum.photos/200/100"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">
+                Description Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Consectetur, modi!
+              </p>
+              <p>$$</p>
             </div>
+          </div>
+        </a>
           </div>
         </div>
       </div>
@@ -332,63 +830,65 @@
 
     <section class="contact-us py-5">
       <div class="container">
-        <h2 class="text-center my-4">CONTACT US</h2>
+        
         <div class="row justify-content-between">
           <div class="col-md-6">
         
           <%= image_tag("contact_us.svg", alt: "Edit Entry") %>
           </div>
 
-          <div class="col-md-6 d-flex align-items-center">
-            <form
-              class="form-info mx-auto border border-1 p-4"
-              style="max-width: 500px"
-            >
-              <div class="form-outline mb-4">
-                <input
-                  type="text"
-                  id="form6Example3"
-                  class="form-control"
-                  placeholder="Your Name"
-                />
-              </div>
+          <div class="col-md-6 d-flex align-items-center justify-content-center">
 
-              <div class="row mb-4">
-                <div class="col">
-                  <div class="form-outline">
-                    <input
-                      type="email"
-                      id="form6Example1"
-                      class="form-control"
-                      placeholder="Email"
-                    />
+          <div class="wrapper">
+            
+            <h2 class="text-center my-4">CONTACT US</h2>
+              <form
+                class="form-info mx-auto border border-1 p-4"
+                style="max-width: 500px"
+              >
+                <div class="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="form6Example3"
+                    class="form-control"
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="row mb-4">
+                  <div class="col">
+                    <div class="form-outline">
+                      <input
+                        type="email"
+                        id="form6Example1"
+                        class="form-control"
+                        placeholder="Email"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline">
+                      <input
+                        type="number"
+                        id="form6Example2"
+                        class="form-control"
+                        placeholder="Ph. no."
+                      />
+                    </div>
                   </div>
                 </div>
-                <div class="col">
-                  <div class="form-outline">
-                    <input
-                      type="number"
-                      id="form6Example2"
-                      class="form-control"
-                      placeholder="Ph. no."
-                    />
-                  </div>
+                <div class="mb-3">
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                    placeholder="Got something to say?"
+                  ></textarea>
                 </div>
-              </div>
-
-              <div class="mb-3">
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  placeholder="Got something to say?"
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary w-100">
-                Submit
-              </button>
-            </form>
+                <button type="submit" class="btn btn-primary w-100">
+                  Submit
+                </button>
+              </form>
+          </div>
           </div>
         </div>
       </div>
@@ -484,3 +984,5 @@
     </footer>
 
   </body>
+<% end %>
+  

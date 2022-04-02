@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap');
+
 /* HOMEPAGE  */
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  font-family: 'Raleway', sans-serif ;
+}
+
 .mycarousel {
-  max-width: 1440px;
+  max-width: 1440px !important;
   margin: 0 auto;
 }
 
@@ -64,16 +71,31 @@
   border: orange !important;
 }
 
-a {
- 
+* a {
+  color:  inherit !important;
   text-decoration: none !important;
 }
-a:hover{
-  color: orange !important;
-}
+
 
 .small-text{
   
   font-size: 14px;
 }
 
+.login .myform{
+  max-width: 360px;
+  width: 100%;
+}
+
+.signup .myform{
+  max-width: 400px;
+  width: 100%;
+}
+
+.login a,.signup a{
+  color:  gray !important;
+}
+
+.login a:hover,.signup a:hover{
+  color: orange !important;
+}

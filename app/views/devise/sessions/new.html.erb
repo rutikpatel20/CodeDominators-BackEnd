@@ -2,11 +2,11 @@
 <body class="login vh-100">
 <div class="container vh-100">
 <div class="row justify-content-center align-items-center vh-100">
-<div class="col-md-4">
+<div class="col-md-6">
 
 <h2 class="text-center py-3">Log in</h2>
 
-<div class="myform p-4 border border-2 bg-white">
+<div class="myform p-4 border border-2 bg-white mx-auto">
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field ">
@@ -24,6 +24,7 @@
       <div class="actions">
       <%= f.submit "Log in", class:"btn btn-primary " %>
     </div>
+
         <div class="field  ms-auto">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me  %>
@@ -37,9 +38,6 @@
     <%= render "devise/shared/links" %>
   </span>
 </div>
-
-
-
 </div>
 </div>
 </div>
