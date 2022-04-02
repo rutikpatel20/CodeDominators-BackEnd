@@ -25,4 +25,38 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_090627) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+ActiveRecord::Schema[7.0].define(version: 2022_04_02_111019) do
+  create_table "events", force: :cascade do |t|
+    t.string "event_name"
+    t.string "organizer_name"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "mobile_no"
+    t.string "city"
+    t.integer "total_stall"
+    t.string "event_poster"
+    t.string "floor_plan"
+    t.string "visit_count"
+    t.string "description_of_event"
+    t.boolean "terms_condition"
+    t.string "venue"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "start_time", precision: 6
+    t.time "end_time", precision: 6
+    t.integer "zip_code"
+  end
+
+  create_table "stalls", force: :cascade do |t|
+    t.string "stall_type"
+    t.string "stall_size"
+    t.decimal "stall_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id", null: false
+    t.index ["event_id"], name: "index_stalls_on_event_id"
+  end
+
+  add_foreign_key "stalls", "events"
 end
