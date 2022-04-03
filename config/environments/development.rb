@@ -69,6 +69,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   #for stripe transcation
-  config.stripe.secret_key = "sk_test_51KiuYWSDHi4Bijzocy0PFWFMRooCw51hrsFUx7d4IUTFWdFf2psmdZzAqakl2YvMNaMmvq1p9PPHYaJFXPtQOYoI00T3Z8sTnv"
-config.stripe.publishable_key = "pk_test_51KiuYWSDHi4BijzohxAqTJc6uZ0sxNDJtmW3lMpi23HkmGdZaJQjxzdTM1N7VqsGnTBiiuRt3KP3vnucM1Bvd67200YIjZyoY0"
+  config.stripe.secret_key = ENV["STRIPE_SECRET_KEY"]
+  config.stripe.publishable_key = ENV["STRIPE_PUB_KET"]
 end
