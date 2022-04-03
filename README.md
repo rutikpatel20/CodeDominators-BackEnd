@@ -1,24 +1,32 @@
-# README
+# BoothZone Website
+> [Click Here !!! ](https://boothzone.herokuapp.com/) to visit this website.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  
+## Used TechStack
+> Frontend : HTML, CSS, JavaScript, Bootstrap
 
-Things you may want to cover:
+> Backend : Ruby On Rails
 
-* Ruby version
+> Database : Postgresql
 
-* System dependencies
+> Deployment Platform : Heroku
 
-* Configuration
+> Payment Gateway : Stripe
 
-* Database creation
 
-* Database initialization
+## What is the production/main branch where all code available
 
-* How to run the test suite
+[Link of The Branch ](https://github.com/rutikpatel20/CodeDominators-BackEnd/tree/user-registration-hardik)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+## Steps about how to run the project from above given branch
+
+```bash
+Clone The Repo
+Pull branch user-registration-hardik
+install ruby and rails
+rails db:migrate
+rails s
+```
+> if you want to run direct output than [Click Here!!!](https://boothzone.herokuapp.com/)
