@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # get 'booths/:id/new', to: 'booths#new', :as => :"new_booth"
   # post 'booths/:id/post', to: 'booths#create'
   devise_for :users
