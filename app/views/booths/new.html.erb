@@ -1,5 +1,8 @@
 <head>
   <%= stylesheet_link_tag "booth" %>
+  <style>
+
+  </style>
 </head>
 <body>
   <div class="signupFrm">
@@ -32,8 +35,10 @@
               <p>Stall Category : <%=s.stall_type%></p>
               <p>Stall Size : <%=s.stall_size%></p>
               <p>Stall Price : <span>&#8377;</span> <%=s.stall_price%></p>
-              <% if @event.stalls.pluck(:disable) != [true, true]%>
+              <% unless s.disable %>
                 <%= f.check_box :stall_id, {multiple: true}, "#{s.id}", false %>book
+              <% else %>
+                <span>Booked</span>
               <% end %>
             </div>
           <% end %>
