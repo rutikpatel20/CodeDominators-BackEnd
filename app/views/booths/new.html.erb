@@ -21,6 +21,7 @@
       <div class="inputContainer">
         <%= f.number_field :contact, placeholder:"a"  ,class:"input" %>
         <label for="" class="label">Contact No</label>
+         <%= f.hidden_field :event_id, value: params[:event_id] %>
       </div>
       <div class="row">
         <h4 class="col-md-12">Stall Details</h4>
@@ -31,10 +32,16 @@
               <p>Stall Category : <%=s.stall_type%></p>
               <p>Stall Size : <%=s.stall_size%></p>
               <p>Stall Price : <span>&#8377;</span> <%=s.stall_price%></p>
-              <%= f.check_box :stall_id, {multiple: true}, "#{s.id}", false %>book
+              <% if @event.stalls.pluck(:disable) != [true, true]%>
+                <%= f.check_box :stall_id, {multiple: true}, "#{s.id}", false %>book
+              <% end %>
             </div>
           <% end %>
         </div>
-        <%= f.submit class:"submitBtn"%>
+         <% if @event.stalls.pluck(:disable) != [true, true]%>
+            <%= link_to "payment", booths_stripeform_path, class:"submitBtn"%>
+            <%= f.submit class:"submitBtn"%>
+         <% end %> 
       <% end %>
     </div>
+  

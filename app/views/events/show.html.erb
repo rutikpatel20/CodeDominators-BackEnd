@@ -125,8 +125,10 @@
             >
               Book Ticket
             </button>
-          <%= button_to "Book Booth", new_booth_path,params:{id:@event}, method: :get, class:"btn col-md-6 m-3",
+           
+              <%= button_to "Book Booth", new_booth_path,params:{event_id:@event}, method: :get, class:"btn col-md-6 m-3",
               style:"background-color: orange !important; color: white" %>
+            
           </div>
         </div>
       </div>

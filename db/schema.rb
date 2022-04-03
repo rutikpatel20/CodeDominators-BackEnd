@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_02_232436) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_03_053920) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.decimal "price"
+    t.string "currency"
+    t.string "status"
+    t.string "stripe_id"
+    t.string "email"
+    t.integer "event_id"
+    t.bigint "stall_id", null: false
+    t.bigint "booth_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booth_id"], name: "index_bookings_on_booth_id"
+    t.index ["stall_id"], name: "index_bookings_on_stall_id"
+  end
+
   create_table "booths", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -50,18 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_232436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id", null: false
+    t.boolean "disable", default: false
     t.index ["event_id"], name: "index_stalls_on_event_id"
-  end
-
-  create_table "transactions", force: :cascade do |t|
-    t.text "square_payment_id"
-    t.decimal "price"
-    t.string "currency"
-    t.string "status"
-    t.integer "booth_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booth_id"], name: "index_transactions_on_booth_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_232436) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "booths"
+  add_foreign_key "bookings", "stalls"
   add_foreign_key "stalls", "events"
-  add_foreign_key "transactions", "booths"
 end
