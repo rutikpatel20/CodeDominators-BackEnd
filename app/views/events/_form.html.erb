@@ -16,7 +16,12 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
       rel="stylesheet"
     />
-
+    <style>
+    .btn-submit{
+      background-color: orange!important;
+      color: white;
+    }
+    </style>
     <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
   </head>
@@ -110,10 +115,7 @@
                 <div class="col-md-12 mt-2">
                  <%= form.check_box :terms_condition %><span>  Agree to the <a href="#">Terms and Conditions</a> </span>
                 </div>
-                <%=form.submit class:"btn mt-3" style:"background-color: orange!important;color: white;"%>
-                <button type="button" class="btn mt-3" style="background-color: orange!important;color: white;" >
-                  Register an event
-                </button>
+                <%=form.submit class:"btn mt-3 btn-submit" %>
                 <p class="m-2">Already have an Account ? Sign in</p>
               <% end %>
             </div>

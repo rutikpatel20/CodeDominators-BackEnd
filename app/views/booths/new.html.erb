@@ -1,64 +1,99 @@
 <head>
-      <%= stylesheet_link_tag "booth" %>
+  <%= stylesheet_link_tag "booth" %>
+  <script
+      type="text/javascript"
+      src="https://sandbox.web.squarecdn.com/v1/square.js"
+    ></script>
+  <script>
+    const appId = "sandbox-sq0idb-CXD48NeKYTv-HafKm_g5oQ";
+    const locationId = "LT1M1E3HEGP46";
+    document.addEventListener('DOMContentLoaded', async function (e) {
+      const ele = document.getElementById("new-payment-method-fields")
+      ele.innerHTML = "";
+      if (!window.Square) {
+       throw new Error('Square.js failed to load properly');
+      }
+      payments = Square.payments(appId, locationId);
 
+      const card = await payments.card()
+      console.log("----------------------");
+      debugger
+      const card_detail = await card.attach('#new-payment-method-fields')
+      debugger
+      // tokenResult = await card_detail.tokenize();
+      if (tokenResult.status === 'OK') {
+
+        const paymentResults = await createPayment(token);
+
+        async function createPayment(token) {
+          const body = JSON.stringify({
+            locationId,
+            sourceId: token,
+          });
+
+          const paymentResponse = await fetch('/payment', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body,
+          });
+
+          if (paymentResponse == "OK") {
+            console.log("payment===okay")
+            debugger
+          }
+        }
+        <% @booth = Booth.create(first_name: @booth.first_name, last_name: @booth.last_name, email: @booth.email, contact: @booth.contact, stall_id: @booth.stall_id) %>
+        <% Transaction.create(price: @event.stalls.sum(:stall_price), currency: "INR", status: "COMPLETEDT", booth_id: @booth.id) %>
+        return tokenResult.token;
+      }
+
+      else {
+        errorMessage = 'Tokenization failed with status: ${tokenResult.status}';
+        if (tokenResult.errors) {
+          errorMessage += 'and errors: ${JSON.stringify(tokenResult.errors)}';
+        }
+      }
+
+    });
+  </script>
 </head>
 <body>
-    <div class="signupFrm">
-        <%= form_with(model:@booth, class:"form row") do |f| %>
-            <p class="title">Booth Booking Form</p>
-            <p class="subTitle">To reserve place please complete and submit the booking form.</p>
-            <div class="inputContainer">
-              <%= f.text_field :first_name, placeholder:"a" ,class:"input" %>
-              <label for="" class="label">First Name</label>
-            </div>
-            <div class="inputContainer">
-              <%= f.text_field :last_name, placeholder:"a"  ,class:"input" %>
-              <label for="" class="label">Last Name</label>
-            </div>
-
-            <div class="inputContainer">
-                <%= f.text_field :email, placeholder:"a"  ,class:"input" %> 
-                <label for="" class="label">Email</label>
-            </div>
-
-            <div class="inputContainer">
-                <%= f.number_field :contact, placeholder:"a"  ,class:"input" %>
-                <label for="" class="label">Contact No</label>
-            </div>
-            <div class="row">
-            <h4 class="col-md-12">Stall Details</h4>
-              <p>Total Available Stalls : <%= @event.total_stall %></p>
-            <div class="d-flex">
-              <% @event.stalls.each do |s |%>
+  <div class="signupFrm">
+    <%= form_with(model:@booth, class:"form row") do |f| %>
+      <p class="title">Booth Booking Form</p>
+      <p class="subTitle">To reserve place please complete and submit the booking form.</p>
+      <div class="inputContainer">
+        <%= f.text_field :first_name, placeholder:"a" ,class:"input" %>
+        <label for="" class="label">First Name</label>
+      </div>
+      <div class="inputContainer">
+        <%= f.text_field :last_name, placeholder:"a"  ,class:"input" %>
+        <label for="" class="label">Last Name</label>
+      </div>
+      <div class="inputContainer">
+        <%= f.text_field :email, placeholder:"a"  ,class:"input" %>
+        <label for="" class="label">Email</label>
+      </div>
+      <div class="inputContainer">
+        <%= f.number_field :contact, placeholder:"a"  ,class:"input" %>
+        <label for="" class="label">Contact No</label>
+      </div>
+      <div class="row">
+        <h4 class="col-md-12">Stall Details</h4>
+        <p>Total Available Stalls : <%= @event.total_stall %></p>
+        <div class="d-flex">
+          <% @event.stalls.each do |s|%>
             <div class="stallstyle ">
               <p>Stall Category : <%=s.stall_type%></p>
               <p>Stall Size : <%=s.stall_size%></p>
               <p>Stall Price : <span>&#8377;</span> <%=s.stall_price%></p>
               <%= f.check_box :stall_id, {multiple: true}, "#{s.id}", false %>book
             </div>
-              <% end %>
-          </div>
-          <div class= "new-payment-method-fields" ></div>
-          <%= f.submit class:"submitBtn"%>
-        
-        <% end %>
-        
+          <% end %>
+        </div>
+        <div id= "new-payment-method-fields" ></div>
+        <%= f.submit class:"submitBtn"%>
+      <% end %>
     </div>
-
-    <script
-      type="text/javascript"
-      src="https://sandbox.web.squarecdn.com/v1/square.js"
-    ></script>
-    <script>
-      const appId = "sandbox-sq0idb-CXD48NeKYTv-HafKm_g5oQ";
-      const locationId = "LT1M1E3HEGP46";
-      document.addEventListener('DOMContentLoaded', async function () {
-        if (!window.Square) {
-          throw new Error('Square.js failed to load properly');
-        }
-        payments = window.Square.payments(appId, locationId);
- 
-        window.card = await payments.card()
-        window.card_detail = await card.attach('.new-payment-method-fields')
-      });
-    </script>

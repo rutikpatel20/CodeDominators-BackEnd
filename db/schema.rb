@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_02_143706) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_02_232436) do
   create_table "booths", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -53,6 +53,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_143706) do
     t.index ["event_id"], name: "index_stalls_on_event_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.text "square_payment_id"
+    t.decimal "price"
+    t.string "currency"
+    t.string "status"
+    t.integer "booth_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booth_id"], name: "index_transactions_on_booth_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,4 +79,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_02_143706) do
   end
 
   add_foreign_key "stalls", "events"
+  add_foreign_key "transactions", "booths"
 end
