@@ -12,11 +12,11 @@ class EventsController < ApplicationController
     event = Event.create(event_params)
     
     if event.valid?
-      flash[:notice] = "Employee is successfully added."
+      flash[:notice] = "Event is successfully created.."
       redirect_to root_path
     else
       flash[:errors] = event.errors.full_messages
-      redirect_to event_path(event)
+      redirect_to new_event_path
     end
   end
 
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     # @event.stalls = nil
     if @event.update(event_params)
-      flash[:notice] = "Employee is successfully Edited."
+      flash[:notice] = "Event is successfully Edited."
       redirect_to root_path
     else
       flash[:errors] = event.errors.full_messages
@@ -49,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:event_name,:venue, :organizer_name, :start_date, :end_date, :mobile_no,:city,:total_stall,:start_time,:end_time, :email, :zip_code,:event_poster, :floor_plan, :visit_count, :description_of_event,:terms_condition,stalls_attributes: [:stall_type, :stall_size, :stall_price])
+    params.require(:event).permit(:event_name,:venue, :organizer_name, :start_date, :end_date, :mobile_no,:city,:total_stall,:start_time,:end_time, :email, :zip_code,:event_poster, :floor_plan, :visit_count, :description_of_event,:terms_condition,stalls_attributes: [:id, :stall_type, :stall_size, :stall_price])
   end
 end
