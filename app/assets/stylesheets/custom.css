@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600;700&display=swap');
 
+
 /* HOMEPAGE  */
 *{
   margin: 0;
@@ -9,6 +10,12 @@
 
 body{
   font-family: 'Raleway', sans-serif ;
+}
+h1,h2,h3,h4{
+  font-weight: 700;
+}
+h5{
+  font-weight: 600;
 }
 
 .mycarousel {
@@ -23,6 +30,7 @@ body{
           box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   border: none;
   margin: 0 auto;
+  color: black;
 }
 
 .mycard:hover {
@@ -32,6 +40,7 @@ body{
 
 .service-card {
   border: none;
+  min-height: 248px;
 }
 
 .service-card:hover {
@@ -72,13 +81,14 @@ body{
 }
 
 * a {
-  color:  inherit !important;
   text-decoration: none !important;
 }
 .event-showcase .card-img-top{
   height: 200px;
 }
-
+.event-showcase .mycard{
+  min-height: 350px;
+}
 .small-text{
   
   font-size: 14px;
@@ -101,3 +111,24 @@ body{
 .login a:hover,.signup a:hover{
   color: orange !important;
 }
+
+.food-inp{
+  padding: 20px;
+}
+a{
+  color:gray !important;
+}
+
+footer a:hover{
+  color:orange !important;
+}
+
+header a:hover{
+  color: orange !important;
+}
+
+.logo{
+  width: 100px;
+}
+
+
