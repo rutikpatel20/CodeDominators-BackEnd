@@ -24,8 +24,28 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def update
+    # bindi
+    @event = Event.find(params[:id])
+    # @event.stalls = nil
+    if @event.update(event_params)
+      flash[:notice] = "Employee is successfully Edited."
+      redirect_to root_path
+    else
+      flash[:errors] = event.errors.full_messages
+      redirect_to edit_event_path(@event)
+    end
+  end
+
   def show
     @event = Event.find(params[:id])
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    if @event.destroy
+      redirect_to root_path
+    end
   end
 
   def event_params

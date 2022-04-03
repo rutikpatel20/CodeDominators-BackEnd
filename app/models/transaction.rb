@@ -1,4 +1,4 @@
 class Transaction < ApplicationRecord
 
-  belongs_to :booth
+  # belongs_to :booth
 end

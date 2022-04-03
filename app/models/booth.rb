@@ -1,4 +1,4 @@
 class Booth < ApplicationRecord
 
-  has_many :transactions
+  # has_many :transactions
 end
